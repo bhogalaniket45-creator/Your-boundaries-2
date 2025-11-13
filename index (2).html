@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Boundaries. Your Pace. Always.</title>
+  
+  <style>
+    /* --- Updated Color Palette for Calmness and Trust --- */
+    :root {
+      --primary-navy: #3A4E6C; /* Deep, trustworthy blue */
+      --soft-blue: #A2B9CE; /* Muted, calming light blue */
+      --accent-light: #E0EBF5; /* Very light background/hover */
+      --cream-white: #FBFBFB; /* Soft background */
+      --text-dark: #2A2F3D; /* Deep text for readability */
+      --text-medium: #546A80;
+      --text-light: #8E9BAA;
+      --emergency-red: #E76F51; /* Muted, not jarring red */
+    
+      /* Enhanced Shadows for Depth and Trust */
+      --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+      --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition curve */
+    }
+    
+    * { margin: 0px; padding: 0px; box-sizing: border-box; }
+    
+    /* Font change for a more human and gentle feel */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background-color: var(--cream-white);
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+    
+    nav {
+      background-color: var(--cream-white);
+      box-shadow: var(--shadow-subtle);
+      position: sticky;
+      top: 0px;
+      z-index: 100;
+      padding: 1rem 0px;
+      border-bottom: 1px solid var(--accent-light); /* Gentle separator */
+    }
+    
+    nav ul { list-style: none; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; padding: 0px 1rem; }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--text-medium);
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px; /* Softer rounded corners */
+      transition: var(--transition-smooth);
+      font-weight: 500;
+      display: block;
+    }
+    
+    nav a:hover {
+      background-color: var(--accent-light);
+      color: var(--primary-navy);
+      transform: translateY(-2px); /* Subtle lift on hover */
+    }
+    
+    nav a:focus {
+      outline: 2px solid var(--soft-blue);
+      outline-offset: 3px;
+    }
+    
+    nav a.active {
+      background-color: var(--soft-blue);
+      color: var(--primary-navy);
+      font-weight: 600;
+      box-shadow: var(--shadow-subtle);
+    }
+    
+    .container { max-width: 800px; margin: 0px auto; padding: 2.5rem 1.5rem; }
+    
+    .page { display: none; animation: 0.6s ease-out 0s 1 normal both fadeIn; } /* Slower, gentler fade */
+    
+    .page.active { display: block; }
+    
+    @keyframes fadeIn { 
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0px); }
+    }
+    
+    .hero {
+      /* Subtle, calm gradient */
+      background: linear-gradient(135deg, var(--accent-light) 0%, var(--soft-blue) 100%);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--soft-blue);
+    }
+    
+    .motto {
+      font-size: 2rem; /* Slightly larger */
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    
+    .motto-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-medium);
+      font-style: normal; /* Less italic, more direct */
+    }
+    
+    .letter {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-subtle);
+      margin-bottom: 2.5rem;
+      line-height: 1.8; /* Increased line height for calmness */
+    }
+    
+    .letter p { margin-bottom: 1.5rem; color: var(--text-dark); font-size: 1.05rem; }
+    
+    .letter p:last-child { margin-bottom: 0px; }
+    
+    h1, h2 { color: var(--primary-navy); margin-bottom: 1rem; }
+    
+    h1 { font-size: 2.2rem; font-weight: 700; }
+    
+    h2 { font-size: 1.75rem; font-weight: 600; }
+    
+    .subtitle {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .commitments-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+    
+    .commitment-card {
+      background-color: var(--white);
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-subtle);
+      border-left: 4px solid var(--soft-blue); /* Trust border color */
+      transition: var(--transition-smooth);
+    }
+    
+    .commitment-card:hover {
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-3px); /* Gentle lift */
+      border-left-color: var(--primary-navy);
+    }
+    
+    .commitment-number {
+      display: inline-block;
+      background-color: var(--accent-light);
+      color: var(--primary-navy);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 36px;
+      font-weight: 700;
+      margin-right: 1.25rem;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-subtle);
+    }
+    
+    .commitment-card p { display: flex; align-items: flex-start; margin: 0px; font-size: 1.05rem; line-height: 1.6; }
+    
+    .signature {
+      text-align: right;
+      font-style: italic;
+      color: var(--text-medium);
+      margin-top: 3rem;
+      font-size: 1.1rem;
+      padding: 1.5rem;
+      background-color: var(--accent-light);
+      border-radius: 12px;
+      border: 1px solid var(--soft-blue);
+    }
+    
+    .control-section {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--accent-light);
+    }
+    
+    .control-section h2 { margin-bottom: 0.5rem; }
+    
+    .control-description { color: var(--text-medium); margin-bottom: 1.5rem; font-size: 1.05rem; }
+    
+    .form-group { margin-bottom: 1.75rem; }
+    
+    label {
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--primary-navy);
+      font-size: 1.05rem;
+    }
+    
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 1rem; /* Slightly larger padding for better touch targets */
+      border: 2px solid var(--soft-blue);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text-dark);
+      background-color: var(--accent-light);
+      transition: var(--transition-smooth);
+      box-shadow: inset var(--shadow-subtle);
+    }
+    
+    input[type="text"]:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-navy);
+      background-color: var(--white);
+      box-shadow: 0 0 0 4px rgba(58, 78, 108, 0.1); /* Custom focus glow */
+    }
+    
+    textarea { min-height: 120px; resize: vertical; }
+    
+    .radio-group { display: flex; flex-direction: column; gap: 0.75rem; }
+    
+    .radio-option {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: var(--accent-light);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      border: 1px solid transparent;
+    }
+    
+    .radio-option:hover {
+      background-color: var(--soft-blue);
+      border-color: var(--primary-navy);
+    }
+    
+    .radio-option input[type="radio"] {
+      margin-right: 0.75rem;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: var(--primary-navy); /* Customize radio button color */
+    }
+    
+    .radio-option label { margin: 0px; cursor: pointer; font-weight: 500; color: var(--text-dark); }
+    
+    .btn {
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: inline-block;
+      text-align: center;
+      font-family: inherit;
+      letter-spacing: 0.5px;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-navy);
+      color: var(--cream-white);
+      width: 100%;
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .btn-primary:hover {
+      background-color: #516d94;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(58, 78, 108, 0.3);
+    }
+    
+    .btn-primary:focus {
+      outline: 4px solid rgba(58, 78, 108, 0.2);
+      outline-offset: 3px;
+    }
+    
+    .btn-primary:active { transform: translateY(0px); }
+    
+    .comfort-buttons { display: grid; gap: 1rem; margin-top: 1.5rem; }
+    
+    .comfort-btn {
+      padding: 1.5rem;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: inherit;
+      text-align: center;
+      box-shadow: var(--shadow-subtle);
+    }
+    
+    /* Color variations for buttons, using a subtle scheme */
+    .comfort-btn-space {
+      background-color: var(--accent-light);
+      color: var(--primary-navy);
+      border-color: var(--soft-blue);
+    }
+    
+    .comfort-btn-space:hover {
+      background-color: var(--soft-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .comfort-btn-slow {
+      background-color: var(--white);
+      color: var(--primary-navy);
+      border-color: var(--soft-blue);
+    }
+    
+    .comfort-btn-slow:hover {
+      background-color: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .comfort-btn-ok {
+      background-color: var(--primary-navy);
+      color: var(--cream-white);
+      border-color: var(--primary-navy);
+    }
+    
+    .comfort-btn-ok:hover {
+      background-color: #516d94;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .emergency-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: var(--emergency-red);
+      color: var(--cream-white);
+      border: none;
+      border-radius: 12px; /* Less rounded than 50px */
+      padding: 1rem 1.75rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(231, 111, 81, 0.4);
+      transition: var(--transition-smooth);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+    
+    .emergency-btn:hover {
+      background-color: #D66144;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(231, 111, 81, 0.6);
+    }
+    
+    .emergency-btn:focus {
+      outline: rgba(231, 111, 81, 0.4) solid 4px;
+      outline-offset: 4px;
+    }
+    
+    .modal-overlay {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(42, 47, 61, 0.7); /* Deeper overlay */
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 1rem;
+    }
+    
+    .modal-overlay.active { display: flex; }
+    
+    .modal {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 3rem;
+      max-width: 550px; /* Slightly wider modal */
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+      animation: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s 1 normal both modalSlideIn; /* Bouncier, beloved animation */
+    }
+    
+    @keyframes modalSlideIn { 
+      0% { opacity: 0; transform: translateY(-50px) scale(0.9); }
+      100% { opacity: 1; transform: translateY(0px) scale(1); }
+    }
+    
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    
+    .modal h2 { margin: 0px; font-size: 1.75rem; color: var(--emergency-red); }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--text-light);
+      padding: 0px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: var(--transition-smooth);
+    }
+    
+    .modal-close:hover {
+      background-color: var(--accent-light);
+      color: var(--primary-navy);
+      transform: rotate(90deg); /* Subtle spin on close */
+    }
+    
+    .modal p { color: var(--text-medium); margin-bottom: 2rem; line-height: 1.6; font-size: 1.05rem; }
+    
+    .confirmation {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: var(--soft-blue);
+      color: var(--primary-navy);
+      padding: 2.5rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      z-index: 3000;
+      display: none;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      max-width: 90%;
+      animation: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s 1 normal both confirmationPop;
+    }
+    
+    .confirmation.active { display: block; }
+    
+    @keyframes confirmationPop { 
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+    
+    /* --- Mobile Responsiveness Adjustments --- */
+    @media (max-width: 768px) {
+      .container { padding: 1.5rem 1rem; }
+      .hero { padding: 2rem 1.5rem; }
+      .motto { font-size: 1.75rem; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      .letter { padding: 2rem 1.5rem; }
+      .control-section { padding: 2rem 1.5rem; }
+      .emergency-btn { bottom: 15px; right: 15px; padding: 0.875rem 1.25rem; font-size: 0.95rem; }
+      nav a { padding: 0.625rem 1rem; font-size: 0.95rem; }
+      .modal { padding: 2rem; }
+    }
+    
+    @media (max-width: 480px) {
+      .motto { font-size: 1.5rem; }
+      h1 { font-size: 1.75rem; }
+      .commitment-card { padding: 1.5rem; }
+      .emergency-btn { padding: 0.75rem 1rem; font-size: 0.85rem; }
+      .comfort-btn { font-size: 1rem; padding: 1.25rem; }
+    }
+  </style>
+
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/03a78d061f6ebc65e008ed42a96b0b48/db259988-a129-4d8f-9ee6-b5b3c7903e78/index.html?rnd=1763073799485&amp;utm_source=perplexity#home" class="nav-link active" data-page="home">Home</a></li>
+      <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/03a78d061f6ebc65e008ed42a96b0b48/db259988-a129-4d8f-9ee6-b5b3c7903e78/index.html?rnd=1763073799485&amp;utm_source=perplexity#commitments" class="nav-link" data-page="commitments">Commitments</a></li>
+      <li><a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/03a78d061f6ebc65e008ed42a96b0b48/db259988-a129-4d8f-9ee6-b5b3c7903e78/index.html?rnd=1763073799485&amp;utm_source=perplexity#control" class="nav-link" data-page="control">Control Panel</a></li>
+    </ul>
+  </nav>
+
+  <button class="emergency-btn" id="emergencyBtn" aria-label="Emergency feedback button">
+    <span>🛑</span>
+    <span>STOP / FEEDBACK</span>
+  </button>
+
+  <div class="modal-overlay" id="emergencyModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Safe Space - Immediate Feedback</h2>
+        <button class="modal-close" id="closeEmergencyModal" aria-label="Close modal">×</button>
+      </div>
+      <p>What is making you uncomfortable right now? (This message is private, anonymous to the site, and requires no immediate response from you.)</p>
+      <form id="emergencyForm">
+        <div class="form-group">
+          <textarea id="emergencyFeedback" placeholder="Share what's on your mind..." required=""></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Feedback</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="confirmation" id="confirmationMessage"></div>
+
+  <div class="page active" id="homePage">
+    <div class="container">
+      <div class="hero">
+        <h1 class="motto">Your Boundaries. Your Pace. Always.</h1>
+        <p class="motto-subtitle">A commitment to your safety, control, and comfort</p>
+      </div>
+
+      <div class="letter">
+        <p>I know that trust isn't given—it's earned through consistent action. I understand that you've experienced betrayal and violations of your boundaries, and your caution is not just valid—it's wisdom.</p>
+        
+        <p>This website exists as more than words. It's a living commitment, a contract that puts you in complete control. You don't owe me trust. You don't owe me comfort. You don't owe me anything.</p>
+        
+        <p>What I owe you is respect, consistency, and the unwavering honoring of every boundary you set. This site is my promise, backed by tools that give you power.</p>
+        
+        <p>Everything here is designed for your safety and comfort. Take your time. Move at your pace. Change your mind whenever you need to. I'm here to honor whatever you decide.</p>
+        
+        <p>You've been hurt before. You've had your boundaries disrespected. You've experienced the pain of broken trust. I can't undo that, but I can promise you this: I will never add to it.</p>
+        
+        <p>This space is yours. These tools are yours. Your comfort, your safety, your boundaries—they come first, always. No exceptions, no excuses, no conditions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="commitmentsPage">
+    <div class="container">
+      <h1>My Commitments to You</h1>
+      <p class="subtitle">This is my formal promise—a contract that I commit to honoring in every interaction we have. These aren't just words; they're the foundation of how I will treat you, always.</p>
+      
+      <ul class="commitments-list">
+        <li class="commitment-card">
+          <p><span class="commitment-number">1</span><span>I will respect every 'No' immediately, without question, explanation required, or pressure to reconsider.</span></p>
+        </li>
+        <li class="commitment-card">
+          <p><span class="commitment-number">2</span><span>I will never share anything you tell me in confidence. Your privacy is absolute.</span></p>
+        </li>
+        <li class="commitment-card">
+          <p><span class="commitment-number">3</span><span>I will be honest with you, even when it's uncomfortable. No lies, no deception, no omissions that matter.</span></p>
+        </li>
+        <li class="commitment-card">
+          <p><span class="commitment-number">4</span><span>I will accept that your boundaries can change at any time, and I will honor new boundaries the moment you set them.</span></p>
+        </li>
+        <li class="commitment-card">
+          <p><span class="commitment-number">5</span><span>I will never pressure you to discuss topics you've marked as off-limits or uncomfortable.</span></p>
+        </li>
+        <li class="commitment-card">
+          <p><span class="commitment-number">6</span><span>I will check in before discussing potentially sensitive topics, and I will accept if you're not ready.</span></p>
+        </li>
+        <li class="commitment-card">
+          <p><span class="commitment-number">7</span><span>I will prioritize your emotional safety over my comfort, always.</span></p>
+        </li>
+      </ul>
+
+      <div class="signature">
+        — Your friend, committed to earning your trust
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="controlPage">
+    <div class="container">
+      <h1>Your Control Panel</h1>
+      <p class="subtitle">This is your space. Use these tools whenever you need to adjust our interactions—no explanation necessary.</p>
+
+      <div class="control-section">
+        <h2>Boundary Adjuster</h2>
+        <p class="control-description">Update what you're comfortable discussing. I'll re
